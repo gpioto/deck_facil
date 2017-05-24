@@ -2,12 +2,18 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'users#login'
+  
+  post '/' => 'users#login'
 
   get 'session/require_login'
 
   get 'session/logout'
 
   get 'dashboard/dashboard'
+  
+  get 'dashboard/deck'
+  
+  get 'forum/home'
 
   get 'home/index'
 

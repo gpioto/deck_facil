@@ -8,20 +8,19 @@ class SessionController < ApplicationController
     end
 
     def current_user
-      @current_user = User.create(name: 'gpioto', email: 'gabriel.piotogomes@gmail.com', password: 'gpioto', updated_at: 2.days.ago)
-        # @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
     def require_login
-        # if session[:user_id].nil?
-        #     redirect_to :controller => 'users', :action => 'login'
-        #     return
-        # else
-        #     @user = User.find_by id: session[:user_id]
-        #     if @user.nil?
-        #         redirect_to :controller => 'users', :action => 'login'
-        #     end
-        # end
+        if session[:user_id].nil?
+            redirect_to :controller => 'users', :action => 'login'
+            return
+        else
+            @user = User.find_by id: session[:user_id]
+            if @user.nil?
+                redirect_to :controller => 'users', :action => 'login'
+            end
+        end
     end
 
 end

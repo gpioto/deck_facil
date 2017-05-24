@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     user = User.find_by confirm_token: params[:id]
         if user
             user.email_activate
-            flash[:success] = "Seja bem-vindo ao Restrot. Faça login para continuar"
+            flash[:success] = "Seja bem-vindo ao Deck Fácil. Faça login para continuar"
             render "login"
         else
             flash[:error] = "Usuário inexistente"
