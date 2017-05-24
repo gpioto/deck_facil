@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Editar Perfil</h3>
+            </div>
+            <div class="box-body">
+                <div class = "col-xs-3" style="width: 28%"></div>
+                <div class = "col-xs-6">
+                    <%= form_for(:user,  :url => {:controller => 'preferences', :action => 'profile'}) do |f| %>
+                        <b>Nome:</b>
+        				<div class="form-group has-feedback">
+        					<%= f.text_field :profile_name, class: 'form-control', placeholder: "Nome", autofocus: true, text: params[:user].profile_last_name %>
+        				</div>
+                        <b>Sobrenome:</b>
+        				<div class="form-group has-feedback">
+        					<%= f.text_field :profile_last_name, class: 'form-control', placeholder: "Sobrenome", text: params[:user].profile_last_name %>
+        				</div>
+        				<b>Foto de Perfil:</b>
+        				<div class="form-group has-feedback">
+        				    <img src="<%= params[:user].profile_image_url %>" height="160px" width="160px" alt="Não há uma imagem de perfil ainda..."/>
+        				    <br><br>
+        				    <b>Atualizar Foto de Perfil:</b>
+        					<%= f.text_field :profile_image_url, class: 'form-control' %>
+        				</div>
+        				<div class="row">
+        				    <div class="col-xs-8"></div>
+        					<div class="col-xs-4">
+        						<%= f.submit :Atualizar, class: 'btn btn-primary btn-block btn-flat' %>
+        				    </div>
+				        </div>
+    			    <% end %>
+    	        </div>
+            </div>
+        </div>
+    </div>
+</div>

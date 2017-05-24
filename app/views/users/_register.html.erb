@@ -1,0 +1,51 @@
+<div class="login-panel panel panel-default">
+	<div class="panel-heading">Registre-se</div>
+	<div class="panel-body">
+  	<% flash.each do |name, msg| -%>
+			<div class="alert alert-<%= name %>"><%= msg %></div>
+		<% end -%>
+		<% if @user && @user.errors.any? %>
+		<div class="alert alert-danger">
+			<p><strong>Dados Inválidos</strong></p>
+			<% for message_error in @user.errors.full_messages %>
+			<p><%= message_error %></p>
+			<% end %>
+		</div>
+        
+		<% end %>
+		<%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+		<fieldset>
+			<div class="form-group has-feedback">
+				<%= f.text_field :name, placeholder: "Username", class: 'form-control'%>
+				<span class="glyphicon glyphicon-user form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				<%= f.text_field :email, placeholder: "Email", class: 'form-control'%>
+				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				<%= f.password_field :password, placeholder: "Senha", class: 'form-control', autocomplete: 'off'%>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				<%= f.password_field :password_confirmation, placeholder: "Confirme sua senha", class: 'form-control', autocomplete: 'off'%>
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+			</div>
+			<div class="row">
+        <div class="col-xs-8">
+					<!-- Uncomment next section when we implement agree terms -->
+          <!-- <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> I agree to the <a href="#">terms</a>
+            </label>
+          </div> -->
+        </div><!-- /.col -->
+        <div class="col-xs-4">
+					<%= f.submit :Register, class: 'btn btn-primary btn-block btn-flat' %>
+        </div><!-- /.col -->
+      </div>
+		</fieldset>
+		<% end %>
+		
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>AdminLTE 2 | Recuperar Senha</title>
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body class="login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="/"><b>Rest</b>rot</a>
+		</div>
+		<div class="login-box-body">
+			<p class="login-box-msg">Recuperar Senha</p>
+			<% flash.each do |name, msg| %>
+          <div class="alert alert-<%= name %>"><%= msg %></div>
+      <% end %>
+            <% if @user && @user.errors.any? %>
+              <ul class="Reset_Errors">
+              <% for message_error in @user.errors.full_messages %>
+                  <li>* <%= message_error %></li>
+              <% end %>
+              </ul>
+            <% end %>
+            <br>
+			<%= form_tag password_resets_path, :method => :post do %>
+				<div class="field">
+    				<div class="form-group has-feedback">
+    				    <%= label_tag :email %>
+    					<%= text_field_tag :email, params[:email] %>
+    				</div>
+				</div>
+				<div class="actions">
+				    <%= submit_tag "Recuperar Senha" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
+</html>
