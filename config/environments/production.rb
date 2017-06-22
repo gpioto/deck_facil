@@ -60,6 +60,17 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "deck_facil_#{Rails.env}"
+  config.action_mailer.default_url_options = { :host => "https://deck-facil.herokuapp.com" }
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.mailgun.org",
+    :port => "2525",
+    :domain => "sandboxcf172ae385494439b2edfc96378a21e5.mailgun.org",
+    :user_name => "postmaster@sandboxcf172ae385494439b2edfc96378a21e5.mailgun.org",
+    :password => "959f0c45625c14c80dc4c3b898e3cfbf",
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl =>false
+  } 
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
