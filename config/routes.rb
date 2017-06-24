@@ -50,4 +50,15 @@ Rails.application.routes.draw do
   post 'preferences/preferences'
 
   resources :password_resets
+  
+  get 'test/test_byName'
+  
+  post 'test/test_byName'
+  
+  get 'test/test_byID'
+  
+  post 'test/test_byID'
+  
+  get 'test/test'
+  
 end
