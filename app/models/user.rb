@@ -1,5 +1,6 @@
 require 'bcrypt'
 class User < ApplicationRecord
+    has_many :posts
     include BCrypt
     before_create :confirmation_token
     before_save :encrypt_password

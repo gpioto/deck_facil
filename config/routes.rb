@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :models
+  resources :posts
+  resources :topics
+  resources :forums
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'users#login'
@@ -12,8 +16,8 @@ Rails.application.routes.draw do
   get 'dashboard/dashboard'
   
   get 'dashboard/deck'
-  
-  get 'forum/home'
+
+  match "forum/home" => redirect {"/posts"}, via: [:get, :post]
 
   get 'home/index'
 
@@ -50,4 +54,14 @@ Rails.application.routes.draw do
   post 'preferences/preferences'
 
   resources :password_resets
+
+  resources :posts do
+    collection do
+      get 'posts/new'
+      get 'posts/show'
+      post 'posts/new'
+      delete :destroy
+    end
+  end
+
 end
