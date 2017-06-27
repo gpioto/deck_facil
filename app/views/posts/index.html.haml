@@ -1,5 +1,6 @@
 #posts
   = link_to "Deck Facil Forum", '/posts'
+  = link_to "Novo Post", '/posts/new'
   - @posts.each do |post|
     .post
       %h2.title= link_to post.title, post
