@@ -10,9 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128010032) do
+ActiveRecord::Schema.define(version: 20170626024153) do
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "wizards_card_code"
+    t.string "edition"
+    t.integer "quantity"
+    t.bigint "deck_id"
+    t.index ["deck_id"], name: "fk_rails_6c4effce17"
+  end
+
+  create_table "decks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.string "format"
+    t.string "description"
+    t.string "photo"
+    t.integer "user_id"
+    t.index ["user_id"], name: "fk_rails_5d31349cbe"
+  end
+
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "email"
     t.string "password"
@@ -29,4 +46,6 @@ ActiveRecord::Schema.define(version: 20161128010032) do
     t.integer "logins"
   end
 
+  add_foreign_key "cards", "decks"
+  add_foreign_key "decks", "users"
 end

@@ -4,7 +4,7 @@ class CreateCards < ActiveRecord::Migration[5.1]
       t.string :wizards_card_code
       t.string :edition
       t.integer :quantity
-      t.integer :deck_id
+      t.integer :deck_id, :limit => 8
     end
     add_foreign_key :cards, :decks, column: :deck_id, primary_key: :id
   end
