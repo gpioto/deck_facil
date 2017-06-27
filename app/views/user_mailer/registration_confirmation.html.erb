@@ -1,0 +1,9 @@
+Olá, <%= @user.name %>!
+<br>
+<br>
+Clique no link abaixo para confirmar seu cadastro:
+<br>
+<a href="<%= confirm_email_user_url(@user.confirm_token) %>"><%= confirm_email_user_url(@user.confirm_token) %></a>
+<br>
+<br>
+<b>Deck Fácil</b>
