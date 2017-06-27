@@ -1,0 +1,11 @@
+#posts
+  = link_to "Deck Facil Forum", '/posts'
+  = link_to "Novo Post", '/posts/new'
+  - @posts.each do |post|
+    .post
+      %h2.title= link_to post.title, post
+      %p.date
+        Published at
+        = time_ago_in_words(post.created_at)
+        by
+        =post.user.name

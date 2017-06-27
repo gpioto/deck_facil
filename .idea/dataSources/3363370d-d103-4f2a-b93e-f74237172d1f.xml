@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Rails deck_facil: test">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="information_schema"/>
+    <schema id="2" name="mysql"/>
+    <schema id="3" name="performance_schema"/>
+    <schema id="4" name="sakila"/>
+    <schema id="5" name="sys"/>
+    <schema id="6" name="world"/>
+    <schema id="7" name="myapp_test"/>
+    <schema id="8" name="c9"/>
+    <schema id="9" name="myapp_development"/>
+  </database-model>
+</dataSource>
