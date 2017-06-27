@@ -1,4 +1,6 @@
-class PostsController < ApplicationController
+class PostsController < SessionController
+  layout 'admin_lte_2'
+  
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def index
