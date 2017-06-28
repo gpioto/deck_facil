@@ -1,6 +1,5 @@
 = simple_form_for @post do |f|
-  = f.input :title, label: 'Título'
-  = f.input :content, label: "Conteúdo"
-  = f.label "Deck:"
-  = f.collection_select :deck_id, @deck_list,:id,:name, include_blank: true
-  = f.submit "Criar Post"
+  = f.input :title, label: 'Título', input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  = f.input :content, label: "Conteúdo", input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  = f.input :deck_id, label: "Deck", collection: current_user.decks, include_blank: true, label_method: :name, value_method: :id, input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  = f.submit "Criar Post", class: 'btn btn-primary'
