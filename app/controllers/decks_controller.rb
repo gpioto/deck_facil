@@ -1,7 +1,7 @@
 class DecksController < SessionController
     layout 'admin_lte_2'
     def index
-      @decks = Deck.all.order("created_at DESC")
+      @decks = Deck.where("user_id = ?", current_user.id).select("*")
     end
 
     def show

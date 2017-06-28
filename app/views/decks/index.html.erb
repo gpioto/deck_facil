@@ -10,12 +10,13 @@
       </h1>
       <br>
     </section>
-    <div class="col-sm-6 col-md-4">
+    <% @decks.each do |deck| %>
+      <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <img src="http://lorempixel.com/100/200/">
           <div class="caption">
-            <h3>Titulo do Deck</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ducimus, quod deserunt voluptatem facilis assumenda optio numquam consequuntur id dolores totam repudiandae facere, iure cupiditate maxime, neque minima asperiores quia.</p>
+            <h3><%= deck.name %></h3>
+            <p><%= deck.description %></p>
             <p class="clearfix">
                 <a href="#" class="btn btn-default pull-left" role="button">Editar</a>
                 <a href="#" class="btn btn-danger pull-right" role="button">Remover</a>
@@ -23,4 +24,6 @@
           </div>
         </div>
     </div>
+    <% end %>
+    
 </div>
