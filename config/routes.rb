@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :decks
   devise_for :models
   resources :posts
   resources :topics

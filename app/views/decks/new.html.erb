@@ -1,0 +1,14 @@
+<div class="row">
+    <section class="content-header">
+      <h1>
+        Novo Deck
+      </h1>
+      <br>
+    </section>
+    <%= simple_form_for @deck do |f| %>
+      <%= f.input :name %>
+      <%= f.input :format %>
+      <%= f.input :description %>
+      <%= f.button :submit %>
+    <% end %>
+</div>

@@ -1,0 +1,23 @@
+<div class="row">
+    <section class="content-header">
+      <h1>
+        Meus Decks
+        <!-- <button class="btn btn-primary pull-right">Novo Deck</button> -->
+        <%= link_to "Novo Deck", new_deck_path, class: "btn btn-primary pull-right"  %>
+      </h1>
+      <br>
+    </section>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="http://lorempixel.com/100/200/">
+          <div class="caption">
+            <h3>Titulo do Deck</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ducimus, quod deserunt voluptatem facilis assumenda optio numquam consequuntur id dolores totam repudiandae facere, iure cupiditate maxime, neque minima asperiores quia.</p>
+            <p class="clearfix">
+                <a href="#" class="btn btn-default pull-left" role="button">Editar</a>
+                <a href="#" class="btn btn-danger pull-right" role="button">Remover</a>
+            </p>
+          </div>
+        </div>
+    </div>
+</div>
