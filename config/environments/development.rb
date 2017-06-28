@@ -26,8 +26,20 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.action_mailer.default_url_options = { :host => "deck_facil-guihrmsfo.c9users.io" }
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.mailgun.org",
+    :port => "2525",
+    :domain => "sandboxcf172ae385494439b2edfc96378a21e5.mailgun.org",
+    :user_name => "postmaster@sandboxcf172ae385494439b2edfc96378a21e5.mailgun.org",
+    :password => "959f0c45625c14c80dc4c3b898e3cfbf",
+    :authentication => :plain,
+    :enable_starttls_auto => true,
+    :ssl =>false
+  } 
+
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -51,4 +63,5 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

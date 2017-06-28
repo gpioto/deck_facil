@@ -1,0 +1,44 @@
+<div class="row">
+    <section class="content-header">
+      <% flash.each do |name, msg| -%>
+				<div class="alert alert-<%= name %>"><%= msg %></div>
+			<% end -%>
+      <h1>
+        Meus Decks
+        <!-- <button class="btn btn-primary pull-right">Novo Deck</button> -->
+        <%= link_to "Novo Deck", new_deck_path, class: "btn btn-primary pull-right"  %>
+      </h1>
+      <br>
+    </section>
+    <% @decks.each do |deck| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <% if deck.card.present? %>
+            <% 
+              image_url = CardImporter.getCardPicByID(deck.card.first.wizards_card_code)
+              if image_url.nil?
+                image_url = ''
+              end
+            %>
+          <% end %>
+          <img src= "<%= image_url %>" >
+          <div class="caption">
+            <h3><%= deck.name %></h3>
+            <h4>
+              <b>Formato:</b> <%= deck.format %>
+            </h4>
+            <p><%= deck.description %></p>
+            <p class="clearfix">
+                <%= link_to url_for(action: :destroy, id: deck.id), class: "btn btn-danger pull-right", method: :delete, data: {confirm: 'Tem certeza que quer deletar este Deck?'} do%>
+                   Remover
+                <% end %>
+                <%= link_to url_for(action: :edit, id: deck.id), class: "btn btn-primary pull-right", method: :get do%>
+                  Editar
+                <% end %>
+            </p>
+          </div>
+        </div>
+    </div>
+    <% end %>
+    
+</div>

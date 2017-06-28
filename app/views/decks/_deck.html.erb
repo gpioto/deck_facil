@@ -1,0 +1,25 @@
+<div class="row">
+<div class="col-xs-12">
+<% if @post.deck.present? %>
+    <h3>Deck:</h3>
+    <% @post.deck.card.each do |card| %>
+        <div class="col-sm-3 col-md-2">
+            <div class="thumbnail">
+                <% 
+                    image_url = CardImporter.getCardPicByID(card.wizards_card_code)
+                    card_info = CardImporter.getCardByName(card.wizards_card_code)
+                    if !card_info[0].nil?
+                        card_name = card_info[0]['name']
+                        card_url = card_info[0]['store_url']
+                    end     
+                %>
+                <a target="_BLANK" href="<%= card_url %>">
+                    <img width=50% height=50% alt="<%= card_name %>" title="<%= card_name %>" src= "<%= image_url %>" >
+                </a>
+            </div>  
+        </div>
+    <% end %>
+<% end %>
+</div>
+</div>
+<hr>
