@@ -13,7 +13,12 @@
     <% @decks.each do |deck| %>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
-          <img src="http://lorempixel.com/100/200/">
+          <% if deck.card.present? %>
+            <% 
+              card_info = CardImporter.getCardByName(deck.card.first.wizards_card_code)  
+            %>
+          <% end %>
+          <img src= "<%=card_info[0]['editions'][0]['image_url']%>" >
           <div class="caption">
             <h3><%= deck.name %></h3>
             <h4>

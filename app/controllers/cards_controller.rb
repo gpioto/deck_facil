@@ -17,21 +17,21 @@ class CardsController < SessionController
       
     end
     
-    def addCard
-      carta = cardImporter.getCardByName(params[:card][:name]);
-      if carta.present?
-        flash[:success] = "Carta não encontrada :("
-        redirect_to url_for(:controller => 'decks', :action => 'index')
-        
-        puts "carta nao adicionada"
+    def add_card
+      carta = CardImporter.getCardByName(params[:card][:wizards_card_code]);
+      
+      if !carta.present?
+        flash[:success] = "Carta não foi encontrada"
+        redirect_to url_for(:controller => 'decks', :action => 'edit', :id => params[:card][:deck] )
       else
+        @card = Card.new
         @card.wizards_card_code = carta[0]['id']
         @card.edition = carta[0]['editions'][0]['set']
         @card.quantity = 1
-        @card.deck_id = 1
-        flash[:success] = "Carta adicionada!"
-        puts "carta adicionada"
-        redirect_to url_for(:controller => 'decks', :action => 'index')
+        @card.deck_id = params[:card][:deck]
+        @card.save
+        flash[:success] = "Carta foi adicionada!"
+        redirect_to url_for(:controller => 'decks', :action => 'edit', :id => params[:card][:deck] )
       end
     end
 end

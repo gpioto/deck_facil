@@ -24,5 +24,6 @@ class DecksController < SessionController
     
     def edit
       @card = Card.new
-    end
+    end  
+      
 end

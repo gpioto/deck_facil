@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   post 'users/create'
+  
+  post 'cards/add_card'
 
   get 'users/login'
 
