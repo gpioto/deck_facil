@@ -1,5 +1,8 @@
 <div class="row">
     <section class="content-header">
+      <% flash.each do |name, msg| -%>
+				<div class="alert alert-<%= name %>"><%= msg %></div>
+			<% end -%>
       <h1>
         Meus Decks
         <!-- <button class="btn btn-primary pull-right">Novo Deck</button> -->

@@ -9,11 +9,16 @@ class DecksController < SessionController
     end
 
     def new
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-      @deck = @current_user.decks.build
+      @deck = Deck.new
     end
     
     def create
+      @deck = current_user.decks.build
+      @deck.name = params[:deck][:name]
+      @deck.format = params[:deck][:format]
+      @deck.description = params[:deck][:description]
       @deck.save
+      flash[:success] = "Deck salvo!"
+      redirect_to url_for(:controller => 'decks', :action => 'index')
     end
 end
