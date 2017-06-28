@@ -8,6 +8,26 @@
                 <h3 class="box-title">Novo Deck</h3>
             </div>
             <div class="box-body">
+                <h4>Deck:</h4>
+                <% if @deck.card.empty? %> 
+                  - Não há nenhuma carta, adicione uma abaixo:
+                <% end %>
+                <% # Aqui fica cada carta já adicionada no deck %>
+                <% @deck.card.each do |card| %>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                      <% 
+                        image_url = CardImporter.getCardPicByID(card.wizards_card_code)
+                      %>
+                        <% if image_url.nil? %>
+                          Não há imagem para esta carta!
+                        <% else %>
+                          <img src= "<%= image_url %>" >
+                        <% end %>
+                    </div>  
+                  </div>
+                <% end %>
+                <hr>
                 <div class = "col-xs-3" style="width: 28%"></div>
                 <div class = "col-xs-6">
                   <%= simple_form_for @card, :url => url_for(:action => 'add_card', :controller => 'cards'), :method => :post do |f| %>

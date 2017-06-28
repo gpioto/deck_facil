@@ -4,6 +4,15 @@ require 'json'
 class CardImporter
     @domain = "https://api.deckbrew.com/mtg/cards"
     
+    
+    def self.getCardPicByID(cardId)
+        card_info = self.getCardByName(cardId)  
+        if !card_info[0].nil? and !card_info[0]['editions'].nil?
+            return card_info[0]['editions'][0]['image_url']
+        else
+            return nil
+        end
+    end
 
     # => Entrada: ID da carta
     #

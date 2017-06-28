@@ -23,6 +23,7 @@ class DecksController < SessionController
     end
     
     def edit
+      @deck = Deck.find_by id: params[:id]
       @card = Card.new
     end  
       

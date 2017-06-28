@@ -15,10 +15,13 @@
         <div class="thumbnail">
           <% if deck.card.present? %>
             <% 
-              card_info = CardImporter.getCardByName(deck.card.first.wizards_card_code)  
+              image_url = CardImporter.getCardPicByID(deck.card.first.wizards_card_code)
+              if image_url.nil?
+                image_url = ''
+              end
             %>
           <% end %>
-          <img src= "<%=card_info[0]['editions'][0]['image_url']%>" >
+          <img src= "<%= image_url %>" >
           <div class="caption">
             <h3><%= deck.name %></h3>
             <h4>
