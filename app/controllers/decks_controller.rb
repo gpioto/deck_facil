@@ -21,4 +21,15 @@ class DecksController < SessionController
       flash[:success] = "Deck salvo!"
       redirect_to url_for(:controller => 'decks', :action => 'index')
     end
+    
+    def destroy
+      @deck = Deck.find_by id: params[:id]
+      if @deck != nil
+        @deck.destroy
+        flash.now[:success] = "Deck foi deletado com sucesso"
+      else
+        flash.now[:error] = "Erro: Deck inexistente."
+      end
+      redirect_to url_for(:controller => 'decks', :action => 'index')
+    end
 end

@@ -22,7 +22,9 @@
             <p><%= deck.description %></p>
             <p class="clearfix">
                 <a href="#" class="btn btn-default pull-left" role="button">Editar</a>
-                <a href="#" class="btn btn-danger pull-right" role="button">Remover</a>
+                 <%= link_to url_for(action: :destroy, id: deck.id), class: "btn btn-danger pull-right", method: :delete, data: {confirm: 'Tem certeza que quer deletar este Deck?'} do%>
+                   Remover
+                 <% end %>
             </p>
           </div>
         </div>

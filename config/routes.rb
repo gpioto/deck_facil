@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'users/login'
 
   post 'users/login'
+  
+  delete 'decks/:id' => 'decks#destroy'
 
   resources :users do
     member do
