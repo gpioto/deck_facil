@@ -21,7 +21,9 @@
             </h4>
             <p><%= deck.description %></p>
             <p class="clearfix">
-                <a href="#" class="btn btn-default pull-left" role="button">Editar</a>
+                <%= link_to url_for(action: :edit, id: deck.id), class: "btn btn-primary pull-right", method: :get do%>
+Editar
+<% end %>
                 <a href="#" class="btn btn-danger pull-right" role="button">Remover</a>
             </p>
           </div>

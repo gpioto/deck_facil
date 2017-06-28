@@ -21,4 +21,8 @@ class DecksController < SessionController
       flash[:success] = "Deck salvo!"
       redirect_to url_for(:controller => 'decks', :action => 'index')
     end
+    
+    def edit
+      @card = Card.new
+    end
 end

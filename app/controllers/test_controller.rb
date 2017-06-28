@@ -8,7 +8,7 @@ class TestController < ApplicationController
     def test_byName
         if (params[:card]).present?
             puts "card: " + params[:card][:card]
-            card = Card.getCardByName(params[:card][:card])
+            card = CardImporter.getCardByName(params[:card][:card])
             flash[:notice] = "Carta encontrada: " + card[0]['name']
         end
     end
@@ -16,7 +16,7 @@ class TestController < ApplicationController
     def test_byID
         if (params[:card]).present?
             puts "card: " + params[:card][:card]
-            card = Card.getCardByID(params[:card][:card])
+            card = CardImporter.getCardByID(params[:card][:card])
             flash[:notice] = "Carta encontrada: " + card[0]['name']
         end
     end

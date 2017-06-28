@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Novo Deck</h3>
+            </div>
+            <div class="box-body">
+                <div class = "col-xs-3" style="width: 28%"></div>
+                <div class = "col-xs-6">
+                  <%= simple_form_for @card do |f| %>
+                    <div class="form-group has-feedback">
+                      <%= f.input :wizards_card_code, class: 'form-control', :label => "Nome da carta:" %>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-4"></div>
+        					    <div class="col-xs-8">
+                        <%= f.button :submit, "Adicionar carta"  %>
+                      </div>
+                    </div>  
+                    
+                  <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
