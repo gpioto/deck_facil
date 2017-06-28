@@ -10,6 +10,11 @@
       </h1>
       <br>
     </section>
+    <% if @decks.empty? %>
+    <div class="col-sm-6 col-md-4">
+      Você não possui nenhum Deck. <%= link_to "Crie um novo!", new_deck_path%>
+    </div>
+    <% end %>
     <% @decks.each do |deck| %>
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
