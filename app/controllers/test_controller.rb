@@ -17,7 +17,9 @@ class TestController < ApplicationController
         if (params[:card]).present?
             puts "card: " + params[:card][:card]
             card = CardImporter.getCardByID(params[:card][:card])
-            flash[:notice] = "Carta encontrada: " + card[0]['name']
+            if !card[0].nil?
+                flash[:notice] = "Carta encontrada: " + card[0]['name']
+            end
         end
     end
 end

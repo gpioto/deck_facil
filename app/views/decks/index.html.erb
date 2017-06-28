@@ -29,10 +29,12 @@
             </h4>
             <p><%= deck.description %></p>
             <p class="clearfix">
+                <%= link_to url_for(action: :destroy, id: deck.id), class: "btn btn-danger pull-right", method: :delete, data: {confirm: 'Tem certeza que quer deletar este Deck?'} do%>
+                   Remover
+                <% end %>
                 <%= link_to url_for(action: :edit, id: deck.id), class: "btn btn-primary pull-right", method: :get do%>
-Editar
-<% end %>
-                <a href="#" class="btn btn-danger pull-right" role="button">Remover</a>
+                  Editar
+                <% end %>
             </p>
           </div>
         </div>

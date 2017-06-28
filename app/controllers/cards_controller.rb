@@ -17,6 +17,18 @@ class CardsController < SessionController
       
     end
     
+    def destroy
+      @card = Card.find_by id: params[:id]
+      deck_id = @card.deck_id
+       if @card != nil
+         @card.destroy
+         flash.now[:success] = "Card foi deletado com sucesso"
+       else
+         flash.now[:error] = "Erro: Card inexistente."
+       end
+       redirect_to url_for(:controller => 'decks', :action => 'edit', :id => deck_id)
+    end
+    
     def add_card
       carta = CardImporter.getCardByName(params[:card][:wizards_card_code]);
       
@@ -25,7 +37,7 @@ class CardsController < SessionController
         redirect_to url_for(:controller => 'decks', :action => 'edit', :id => params[:card][:deck] )
       else
         @card = Card.new
-        @card.wizards_card_code = carta[0]['id']
+        @card.wizards_card_code = carta[0]['name']
         @card.edition = carta[0]['editions'][0]['set']
         @card.quantity = 1
         @card.deck_id = params[:card][:deck]

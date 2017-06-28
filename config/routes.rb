@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   root 'users#login'
   
+  delete 'decks/:id' => 'decks#destroy'
+  
+  delete 'cards/:id' => 'cards#destroy'
+  
   post '/' => 'users#login'
 
   get 'session/require_login'
