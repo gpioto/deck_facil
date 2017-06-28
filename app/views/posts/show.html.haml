@@ -3,7 +3,13 @@
   <hr>
   %h1= @post.title
   %p= @post.content
-
+  - if @post.deck
+    .caption
+      %h3= @post.deck.name
+      %h4
+        %b Formato:
+        =@post.deck.format
+      %p= @post.deck.description
   #comments
     %h2= @post.comments.count
     = render @post.comments

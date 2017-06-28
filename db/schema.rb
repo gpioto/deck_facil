@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626024153) do
+ActiveRecord::Schema.define(version: 20170628114153) do
 
-  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "wizards_card_code"
     t.string "edition"
     t.integer "quantity"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170626024153) do
     t.index ["deck_id"], name: "fk_rails_6c4effce17"
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "comment"
     t.bigint "post_id"
     t.bigint "user_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170626024153) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "decks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "decks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "format"
     t.string "description"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170626024153) do
     t.index ["user_id"], name: "fk_rails_5d31349cbe"
   end
 
-  create_table "models", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "models", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -56,15 +56,16 @@ ActiveRecord::Schema.define(version: 20170626024153) do
     t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "deck_id"
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "email"
     t.string "password"
