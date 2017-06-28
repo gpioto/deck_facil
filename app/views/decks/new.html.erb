@@ -7,7 +7,9 @@
     </section>
     <%= simple_form_for @deck do |f| %>
       <%= f.input :name %>
-      <%= f.input :format %>
+     <%= f.input :format, :as => :select, 
+               :label => "Format", :include_blank => false,
+               :collection => [['Modern','modern'],['Standard','standard'],['Legacy','legacy'],['Vintage','vintage'],['Draft','draft'],['Sealed','sealed']] %>
       <%= f.input :description %>
       <%= f.button :submit %>
     <% end %>
