@@ -14,6 +14,8 @@ class PostsController < SessionController
   def new
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @post = @current_user.posts.build
+    
+    @deck_list = Deck.where(:user_id => current_user.id)
   end
 
   def create
@@ -53,7 +55,7 @@ class PostsController < SessionController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :deck_id)
   end
 
 end

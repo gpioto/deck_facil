@@ -3,6 +3,8 @@
   <hr>
   %h1= @post.title
   %p= @post.content
+  
+  = render "decks/deck/"
 
   #comments
     %h2= @post.comments.count

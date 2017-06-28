@@ -9,8 +9,27 @@
             </div>
             <div class="box-body">
                 <h4>Deck:</h4>
+                <div class = "col-xs-3" style="width: 28%"></div>
+                <div class = "col-xs-12">
+                  <%= simple_form_for @card, :url => url_for(:action => 'add_card', :controller => 'cards'), :method => :post do |f| %>
+                    <div class="form-group has-feedback">
+                      <%= f.input :wizards_card_code, class: 'form-control', :label => "Nome da carta:" %>
+                      <%= f.hidden_field :deck, :value => params[:id] %>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-4"></div>
+        					    <div class="col-xs-10">
+                        <%= f.button :submit, "Adicionar carta"  %>
+                      </div>
+                    </div>  
+                    
+                  <% end %>
+                </div>
+                <br>
+                <br>
+                <br>
                 <% if @deck.card.empty? %> 
-                  - Não há nenhuma carta, adicione uma abaixo:
+                  - Não há nenhuma carta, adicione uma acima!
                 <% end %>
                 <% # Aqui fica cada carta já adicionada no deck %>
                 <% @deck.card.each do |card| %>
@@ -27,23 +46,6 @@
                     </div>  
                   </div>
                 <% end %>
-                <hr>
-                <div class = "col-xs-3" style="width: 28%"></div>
-                <div class = "col-xs-6">
-                  <%= simple_form_for @card, :url => url_for(:action => 'add_card', :controller => 'cards'), :method => :post do |f| %>
-                    <div class="form-group has-feedback">
-                      <%= f.input :wizards_card_code, class: 'form-control', :label => "Nome da carta:" %>
-                      <%= f.hidden_field :deck, :value => params[:id] %>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-4"></div>
-        					    <div class="col-xs-8">
-                        <%= f.button :submit, "Adicionar carta"  %>
-                      </div>
-                    </div>  
-                    
-                  <% end %>
-                </div>
             </div>
         </div>
     </div>

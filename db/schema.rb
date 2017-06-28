@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626024153) do
+ActiveRecord::Schema.define(version: 20170628164709) do
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "wizards_card_code"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20170626024153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.bigint "deck_id"
+    t.index ["deck_id"], name: "fk_rails_26ac8d4653"
   end
 
   create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -83,4 +85,5 @@ ActiveRecord::Schema.define(version: 20170626024153) do
 
   add_foreign_key "cards", "decks"
   add_foreign_key "decks", "users"
+  add_foreign_key "posts", "decks"
 end

@@ -1,4 +1,6 @@
 = simple_form_for @post do |f|
   = f.input :title, label: 'Título'
   = f.input :content, label: "Conteúdo"
+  = f.label "Deck:"
+  = f.collection_select :deck_id, @deck_list,:id,:name, include_blank: true
   = f.submit "Criar Post"
